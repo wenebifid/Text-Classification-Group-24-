@@ -1,0 +1,66 @@
+================================================================================
+RNN HATE SPEECH DETECTION - COMPREHENSIVE RESULTS REPORT
+WITH HYPERPARAMETER TUNING
+================================================================================
+
+TABLE 1 - OVERALL PERFORMANCE:
+--------------------------------------------------------------------------------
+    Embedding Type  Test Accuracy  F1-Score (Macro)  F1-Score (Weighted)
+            TF-IDF         0.8943            0.6707               0.8800
+Word2Vec Skip-gram         0.8985            0.7166               0.8916
+     Word2Vec CBOW         0.8931            0.7110               0.8877
+
+TABLE 2 - PER-CLASS PERFORMANCE:
+--------------------------------------------------------------------------------
+         Embedding              Class  Precision  Recall  F1-Score  Support
+            TF-IDF        Hate Speech     0.5658  0.1503    0.2376      286
+            TF-IDF Offensive Language     0.9182  0.9567    0.9371     3838
+            TF-IDF            Neither     0.8141  0.8619    0.8373      833
+Word2Vec Skip-gram        Hate Speech     0.5197  0.2762    0.3607      286
+Word2Vec Skip-gram Offensive Language     0.9360  0.9450    0.9405     3838
+Word2Vec Skip-gram            Neither     0.8043  0.8980    0.8486      833
+     Word2Vec CBOW        Hate Speech     0.4556  0.2867    0.3519      286
+     Word2Vec CBOW Offensive Language     0.9354  0.9388    0.9371     3838
+     Word2Vec CBOW            Neither     0.8022  0.8908    0.8441      833
+
+TABLE 3 - HATE SPEECH PERFORMANCE:
+--------------------------------------------------------------------------------
+         Embedding  Precision  Recall  F1-Score
+            TF-IDF     0.5658  0.1503    0.2376
+Word2Vec Skip-gram     0.5197  0.2762    0.3607
+     Word2Vec CBOW     0.4556  0.2867    0.3519
+
+TABLE 4 - HYPERPARAMETER TUNING:
+--------------------------------------------------------------------------------
+Embedding                                                                                   Best Config  Val F1 (Macro)  Val Accuracy  Configs Tested
+   TF-IDF          {'embedding_dim': 256, 'rnn_units': 64, 'dropout_rate': 0.2, 'learning_rate': 0.001}          0.6967        0.8886               5
+Skip-gram  {'rnn_units': 64, 'dropout_rate': 0.2, 'learning_rate': 0.001, 'trainable_embeddings': True}          0.7205        0.8892               6
+     CBOW {'rnn_units': 128, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'trainable_embeddings': True}          0.7110        0.8868               6
+
+TABLE 5 - QUALITATIVE COMPARISON:
+--------------------------------------------------------------------------------
+                   Aspect                        TF-IDF          Word2Vec Skip-gram               Word2Vec CBOW
+            Training Time                          Fast                    Moderate                        Fast
+Vocabulary Representation Statistical (frequency-based) Distributed (dense vectors) Distributed (dense vectors)
+   Semantic Understanding                       Limited                        Good                        Good
+       Rare Word Handling                          Poor                        Good                    Moderate
+       Computational Cost                           Low                    Moderate                         Low
+         Interpretability                          High                    Moderate                    Moderate
+        Context Awareness           None (bag-of-words)        Local context window        Local context window
+
+CONCLUSION:
+--------------------------------------------------------------------------------
+Best Overall: Word2Vec Skip-gram (F1-Macro: 0.7166)
+Best for Hate Speech: Word2Vec Skip-gram (F1: 0.3607)
+
+Key Challenges:
+- Severe class imbalance (~6% hate speech)
+- High vocabulary overlap between hate speech and offensive language
+- Simple RNN has limited capacity for semantic distinction
+
+Recommendations:
+- Use LSTM/GRU for better memory
+- Address class imbalance with SMOTE or class weights
+- Consider transformer models (BERT) for contextual understanding
+
+================================================================================

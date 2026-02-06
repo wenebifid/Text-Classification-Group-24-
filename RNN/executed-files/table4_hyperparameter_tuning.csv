@@ -1,0 +1,4 @@
+Embedding,Best Config,Val F1 (Macro),Val Accuracy,Configs Tested
+TF-IDF,"{'embedding_dim': 256, 'rnn_units': 64, 'dropout_rate': 0.2, 'learning_rate': 0.001}",0.6967452998336298,0.8886423110961914,5
+Skip-gram,"{'rnn_units': 64, 'dropout_rate': 0.2, 'learning_rate': 0.001, 'trainable_embeddings': True}",0.7205073416046716,0.8892475366592407,6
+CBOW,"{'rnn_units': 128, 'dropout_rate': 0.3, 'learning_rate': 0.001, 'trainable_embeddings': True}",0.7110295396155827,0.8868266940116882,6

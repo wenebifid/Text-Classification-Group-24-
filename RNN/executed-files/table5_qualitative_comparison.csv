@@ -1,0 +1,8 @@
+Aspect,TF-IDF,Word2Vec Skip-gram,Word2Vec CBOW
+Training Time,Fast,Moderate,Fast
+Vocabulary Representation,Statistical (frequency-based),Distributed (dense vectors),Distributed (dense vectors)
+Semantic Understanding,Limited,Good,Good
+Rare Word Handling,Poor,Good,Moderate
+Computational Cost,Low,Moderate,Low
+Interpretability,High,Moderate,Moderate
+Context Awareness,None (bag-of-words),Local context window,Local context window
